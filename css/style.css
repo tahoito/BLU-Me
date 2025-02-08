@@ -1,0 +1,557 @@
+@charset "UTF-8";
+
+
+/* 共通事項
+------------------------- */
+html, body {
+    font-size: 100%;
+    line-height: 1.8;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background: linear-gradient(to bottom, #dfddda 0%, #cbb897 100%);*/
+	background: linear-gradient(to bottom, #eeeae4 0%, #d0c9bd 100%);
+    z-index: -1; /* 背景を後ろに送る */
+    display: block; /* 明示的にブロック要素として扱う */
+}
+
+
+
+/* ヘッダー*/
+header {
+	display: flex;
+    background-color:transparent;
+	justify-content: space-between;
+	position: fixed;
+	top: 0; /* 上部から配置の基準位置を決める */
+	left: 0; /* 左から配置の基準位置を決める */
+	width: 100%; /* ヘッダーの横幅を指定する */
+	z-index: 1000;
+}
+
+
+nav ul{
+	display:flex;
+	list-style-type: none;
+	justify-content: space-around;
+	color:#ffffff;
+	font-size: 1.1rem;
+	padding-top:10px;
+
+}
+
+nav{
+	width:35%;
+	
+}
+
+.heart{
+	font-size:30px;
+
+}
+
+nav.open-heart{
+	width:70%;
+}
+
+
+.logo{
+	color:#6B4F4F;
+	font-size:4vw;
+	font-weight: bold;
+	padding-left: 5%;
+	font-family: 'Caveat', cursive;
+}
+
+.sub-title{
+	font-weight: bold;
+	color:#6B4F4F;
+	padding-top:3%;
+	font-size:20px;
+	text-align: center;
+	padding-bottom:3%;
+	font-family: "Noto Sans JP", sans-serif !important;
+}
+
+.loader {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	background-color: #d0c9bd;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Caveat', cursive;
+	color: #6B4F4F;
+	font-size: 5vw;
+}
+
+.loading-active header,
+.loading-active #search {
+    display: none;
+}
+
+
+/* スライドショー*/
+.slider {
+	padding-top: 7%;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    height: 85vh;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* スライドの画像設定 */
+.slider .slick-slide {
+    display: flex !important; /* スライドが非表示にならないようにする */
+    justify-content: center;
+    align-items: center;
+}
+
+.slider img {
+    width: 100%;
+    object-fit: contain;
+    object-position:center;
+	aspect-ratio: 3 / 2;
+}
+
+@keyframes fadezoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+
+/* フレーズ部分 */
+.space{
+	margin:10% 0;
+}
+
+.space-sm{
+	margin:3% 0;
+}
+
+  
+
+#page_top{
+	width:50px;
+	height:50px;
+	position:fixed;
+	right:10px;
+	bottom:10px;
+	border-radius: 50%;
+	background:#aa9f95;
+	opacity:0.9;
+  }
+
+#page_top::before {
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+	content: '\f102';
+	font-size: 30px;
+	color: #ffffff;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
+	}
+
+
+/*検索フォーム*/
+#search {
+	display: flex; /* フレックスボックスで余白をなくす */
+	gap: 0; /* 隙間をゼロに設定 */
+	margin-top: 16px;
+	position:relative;
+}
+  
+
+#box{
+	width:250px;
+	padding:0 15px;
+	border-radius:4px 0 0 4px;
+	background:#ffffff;
+	border:none;
+	outline:0;
+	color:#666;
+	border-color: #6B4F4F;
+	font-size: 20px;
+}
+
+
+#btn {
+	color: #6B4F4F;
+	font-size: 20px;
+	cursor: pointer;
+	transition: all 0.3s;
+	position: absolute;
+	right:10px;
+  }
+  
+  #btn:hover {
+	color: #beb7b2;
+  }
+  
+  #btn i {
+	margin: 0; /* アイコンの余計な余白を削除 */
+  }
+  
+
+
+/* コンテンツ
+-------------------------- */
+.scroll_up {
+    transition: 0.8s ease-in-out;
+    transform: translateY(30px);
+    opacity: 0;
+}
+.scroll_up.on {
+    transform: translateY(0);
+    opacity: 1.0;
+}
+
+  
+
+.contents {
+	width: 920px;
+	padding: 30px 0;
+	margin: 0 auto;
+}
+.grid {
+	display: flex;
+	justify-content: space-between;
+}
+.itembox {
+	width: 24%;
+	margin-top: 10px;
+	text-align: center;
+	overflow: hidden;
+}
+.itembox img{
+	width: 100%;
+	height: auto;
+}
+
+.itembox a{
+    display: block;
+    transition: all .3s ease-in-out;
+    transform: scale(1.1);
+}
+
+.itembox a:hover{
+    transform: scale(1);
+}
+
+/* フィルターボタン */
+.filter-button {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+}
+	
+/* 親ボタンの位置 */
+.gnavi__list {
+    margin-right: 20px; /* ボタン間の間隔 */
+    position: relative; /* 下のドロップダウンを基準にするため */
+    padding: 10px 20px;
+    color: #978575;
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #978575;
+	transition: .3s;
+}
+
+.gnavi__list:hover {
+	color: #fff;
+	background: #978575;
+}
+
+.gnavi__list.active {
+    background: #5f4635;  /* 濃いブラウン */
+    color: #fff;
+    border-color: #5f4635; /* ボーダーも統一 */
+}
+
+/* ドロップダウンメニューが非表示になる */
+.dropdown__lists {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: rgb(255,255,255,0.8);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: absolute;
+    top:100% ;  /* ボタンの真下に配置 */
+	left: 0;
+    width: 130px; /* ボタンと同じ幅にする */
+	z-index: 100;
+
+}
+
+/* ドロップダウンリスト項目 */
+.dropdown__list {
+    padding: 8px;
+    cursor: pointer;
+	text-align: center;
+	color:#978575;
+	background-color: (151, 133, 117);
+	
+}
+
+/* ホバー時のエフェクト */
+.dropdown__list:hover {
+    background-color: #978575;
+	color:white;
+	opacity: 0.5;
+	
+}
+
+/* ホバーでドロップダウンが表示される */
+.gnavi__list:hover .dropdown__lists {
+    display: block;
+}
+
+/* ドロップダウンをクリックしたときにも表示 */
+.gnavi__list:focus-within .dropdown__lists {
+    display: block;
+}
+
+	
+
+/*モーダルウィンドウ*/
+
+#modal {
+	display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* 背景を暗くする*/
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* 表示の優先順位を上げる*/
+}
+
+
+#modal img {
+    max-width: 90%;
+    max-height: 90%;
+	position: absolute;
+	top: 50%; /* 画面の中央に配置*/
+	left: 50%;
+	transform: translate(-50%, -50%); /* 画像を中央に調整 */
+  	display: block;  /* インライン要素をブロックにしてマージンを使う*/ 
+}
+
+#modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#modal-favorite {
+	position: absolute;
+	bottom: 20px;
+	right: 50px;
+	font-size: 30px;
+	color: white; /* 初期色 */
+	cursor: pointer;
+}
+
+#modal-favorite.active {
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900; /* 太さ */
+	color: #ffa1a1; /* 色を赤にする（変更したい色） */
+}
+
+
+  
+/* 初期状態：枠線のみのハート */
+#modal-favorite i {
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 400; /* 通常の太さ */
+	color: white; /* 枠線のみの色 */
+}
+
+.modal-title{
+	color:white;
+	position: absolute;
+	bottom: 29px;
+	right: 90px;
+
+}
+  
+/*フッター*/
+footer {
+    display: flex;
+    justify-content: center;  /* 水平方向*/
+    align-items: center;      /* 垂直方向*/
+    background-color: #6a6262;
+    margin-top: 10%;
+    padding: 30px 0;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    font-size: 12px;
+    color: #ffffff;
+    margin: 0;
+    padding:15px 0;
+}
+
+
+/* スマホ対応
+-------------------------- */
+@media screen and (max-width: 768px) {
+	body {
+		margin: 0;
+	}
+	.filter-button li {
+		font-size: 14px;
+	}
+	.contents {
+		width: calc(100% - 20px);
+	}
+	.itembox {
+		width: 48%;
+	}
+	.slider {
+		padding-top: 15%;
+		overflow: hidden;
+		width: 100%;
+		max-width: 1200px;
+		height: 35vh;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.slider .slick-slide {
+		display: flex !important; /* スライドが非表示にならないようにする */
+		justify-content: center;
+		align-items: center;
+	}
+
+	#page_top{
+		width:40px;
+		height:40px;
+		position:fixed;
+		right:10px;
+		bottom:10px;
+		border-radius: 50%;
+		background:#aa9f95;
+		opacity:0.9;
+		z-index:1000;
+	  }
+	#page_top::before {
+		font-family: 'Font Awesome 5 Free';
+		font-weight: 800;
+		content: '\f102';
+		font-size: 20px;
+		color: #ffffff;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		translate: -50% -50%;
+		}
+
+	.logo{
+		font-size:6vw;
+		padding-left: 3%;
+		font-family: 'Caveat', cursive;
+		padding-top: 10px;
+		}
+
+	.sub-title h2{
+		font-size:15px;
+		text-align: center;
+		padding-bottom:3%;
+	}
+
+	nav ul{
+		display:flex;
+		list-style-type: none;
+		justify-content: space-around;
+		padding-top:5px;
+	}
+
+	.itembox img{
+		width: 80%;
+		height: auto;
+	}
+
+	
+	#box{
+		width:150px;
+		border-radius:4px 0 0 4px;
+		background:#ffffff;
+		border:none;
+		outline:0;
+		color:#666;
+		border-color: #6B4F4F;
+		font-size: 15px;
+	}
+	
+	#btn {
+		color: #6B4F4F;
+		font-size: 15px;
+		cursor: pointer;
+		transition: all 0.3s;
+		position: absolute;
+		right:10px;
+	}
+	  
+	#btn:hover {
+		color: #beb7b2;
+	}
+	  
+	#btn i {
+		margin: 0; /* アイコンの余計な余白を削除 */
+	}
+		
+	/* 親ボタンの位置 */
+	.gnavi__list {
+		margin-right: 5px; /* ボタン間の間隔 */
+		position: relative; /* 下のドロップダウンを基準にするため */
+		padding: 5px 10px;
+		text-align: center;
+	}
+	
+	  
+}
+
+@media (max-width: 1024px) {
+    .itembox {
+        width: 32%; /* 3列表示 */
+    }
+}
+
+
+/* 画面幅が480px以下のとき */
+@media (max-width: 480px) {
+    .itembox {
+        width: 100%; /* 1列表示 */
+    }
+}

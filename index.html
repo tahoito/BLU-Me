@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+	<title>BLU:Me</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- css読み込み -->
+	<!-- リセットcss -->
+	<link rel="stylesheet" href="css/destyle.css">
+    <link rel="stylesheet" href="css/slick.css">
+	<!-- 自身のcss -->
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<!-- ヘッダー -->
+	<header>
+			<!-- ロゴやサイトのタイトル -->
+		<div class="logo">
+			<a href="#"><h1>BLU:Me</h1></a>
+		</div>
+		<!-- ナビゲーションバー -->
+		<nav>
+			<ul>
+				<li>
+					<form id="search" method="get" action="">
+						<input id="box" name="s" type="text" placeholder="ヘアスタイルを入力"/>
+						<button id="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+					</form>			
+				</li>
+				<!--<li><div class="heart"><i class="fa-regular fa-heart"></i></div></li>-->
+			</ul>
+		</nav>
+	</header>
+
+	<!--<div class="slider-wrap">
+		<div class="slide-item"><img src="img/top/PKBXKuyAuhRvmc2ps.jpg" alt="" width="1920" height="1080"></div>
+		<div class="slide-item"><img src="img/top/B074955940.jpg" alt=""></div>
+		<div class="slide-item"><img src="img/top/ogp.jpg" alt=""></div>
+		<div class="slide-item"><img src="img/top/Bell-hair_photo028_s-900x600.jpg" alt=""></div>
+	</div>-->
+	
+	<div class="loader">
+		<p class="loading_txt">BLU:Me</p>
+	</div>
+
+	<div class="slider">
+		<div>
+			<img src="img/top/Bell-hair_photo028_s-900x600.jpg">
+		</div>
+		<div>
+			<img src="img/top/02-のコピー-1.jpg">
+		</div>	
+		<div>
+			<img src="img/top/es-by-rush_022-900x600.jpg">
+		</div>	
+		<div>
+			<img src="img/top/B164628325.jpg">
+		</div>
+		<div>
+			<img src="img/top/dreamy-arrangement-with-decorative-dried-flowers_23-2151363303.jpg.avif">
+		</div>
+		
+	</div>
+	
+	<div class="sub-title">
+		<h2>理想的なヘアスタイルを見つけて、笑顔の花を咲かせよう</h2>
+	</div>
+
+	<ul class="filter-button">
+		<li class="gnavi__list" id="all">All</li>
+		
+		<!-- 性別フィルター -->
+		<li class="gnavi__list" id="women-filter">Women</li>
+		<li class="gnavi__list" id="men-filter">Men</li>
+	
+		<li class="gnavi__list" id="hairstyle">Style
+			<ul class="dropdown__lists" id="style-dropdown">
+				<!-- 男女共通 -->
+				<li class="dropdown__list" id="short">ショート</li>
+				<li class="dropdown__list" id="bob">ボブ</li>
+				<li class="dropdown__list" id="medium">ミディアム</li>
+				<li class="dropdown__list" id="long">ロング</li>
+				<li class="dropdown__list" id="wolf">ウルフヘア</li>
+				<li class="dropdown__list" id="layer">レイヤー</li>
+				<!-- メンズ -->
+				<li class="dropdown__list men" id="twoblock">ツーブロック</li>
+				<li class="dropdown__list men" id="perm">パーマ（メンズ）</li>
+				<li class="dropdown__list men" id="slickback">オールバック</li>
+				<li class="dropdown__list men" id="mash">マッシュ</li>
+				<li class="dropdown__list men" id="slickback">センター分け</li>
+			</ul>
+		</li>
+	
+		<li class="gnavi__list" id="haircolor">Color
+			<ul class="dropdown__lists" id="color-dropdown">
+				<li class="dropdown__list" id="high-t">ハイトーン</li>
+				<li class="dropdown__list" id="dark">暗髪</li>
+				<li class="dropdown__list" id="brown">茶髪</li>
+				<li class="dropdown__list" id="inner">インナー</li>
+				<li class="dropdown__list" id="outer">アウター</li>
+				<li class="dropdown__list" id="ombre">グラデーション</li>
+				<li class="dropdown__list" id="highlight">ハイライト</li>
+				<li class="dropdown__list" id="warm">ウォームカラー</li>
+				<li class="dropdown__list" id="cool">クールカラー</li>
+				<li class="dropdown__list" id="ash">アッシュ系</li>
+			</ul>
+		</li>
+	
+		<li class="gnavi__list" id="hairarrange">Arrange
+			<ul class="dropdown__lists" id="arrange-dropdown">
+				<li class="dropdown__list" id="hairpin">ヘアピン</li>
+				<li class="dropdown__list" id="bun">お団子</li>
+				<li class="dropdown__list" id="curly">巻き髪</li>
+				<li class="dropdown__list" id="braid">三つ編み</li>
+				<li class="dropdown__list" id="french_b">編み込み</li>
+				<li class="dropdown__list" id="halfup">ハーフアップ</li>
+			</ul>
+		</li>
+	
+		<li class="gnavi__list"><i id="filter-favorite" class="fa-regular fa-heart"></i></li>
+	</ul>
+	
+	
+	<div class="space-sm"></div>
+
+	<!-- コンテンツ -->
+	<a href="#" id="page_top" class="page_top_btn"></a>
+
+
+	<div class="scroll_up">
+		<div class="contents">
+			<ul class="grid" id="grid">
+				<li class="itembox hairstyle bob">
+					<a href="img/hairstyle/short/short.jpg" data-title="ショートボブ" data-id="hair1">
+						<img src="img/hairstyle/short/short.jpg" alt="">
+					</a>
+				</li>
+				<li class="itembox hairstyle bob layer">
+					<a href="img/hairstyle/bob/bob.jpg" data-title="レイヤーボブ" data-id="hair2">
+						<img src="img/hairstyle/bob/bob.jpg" alt="">
+					</a>
+				</li>
+				<li class="itembox haircolor brown">
+					<a href="img/haircolor/brown/brown.jpg" data-title="茶髪ロング" data-id="hair3">
+						<img src="img/haircolor/brown/brown.jpg" alt="">
+					</a>
+				</li>
+				<li class="itembox haircolor inner">
+					<a href="img/haircolor/inner/inner.jpeg" data-title="インナー" data-id="hair4">
+						<img src="img/haircolor/inner/inner.jpeg" alt="">
+					</a>
+				</li>
+				<li class="itembox men hairstyle mash">
+					<a href="img/hairstyle/mash/746eb5af-4895-4a1b-936e-57dd82ef0e00.jpg" data-title="マッシュ" data-id="hair27">
+						<img src="img/hairstyle/mash/746eb5af-4895-4a1b-936e-57dd82ef0e00.jpg">
+					</a>
+				</li>
+				<li class="itembox hairstyle long">
+					<a href="img/hairstyle/long/long.jpg" data-title="暗髪ロング" data-id="hair5">
+						<img src="img/hairstyle/long/long.jpg" alt="">
+					</a>
+				</li>
+				<li class="itembox hairarrange halfup">
+					<a href="img/hairarrange/halfup/bob2.jpg" data-title="ハーフアップ" data-id="hair6">
+						<img src="img/hairarrange/halfup/bob2.jpg" alt="">
+					</a>
+				</li>
+				<li class="itembox hairarrange bun">
+					<a href="img/hairarrange/bun/bun2.jpeg" data-title="お団子" data-id="hair7">
+						<img src="img/hairarrange/bun/bun2.jpeg" alt="">
+					</a>
+				</li>
+				<li class="itembox men hairstyle center">
+					<a href="img/hairstyle/center/male.jpg" data-title="七三分け" data-id="hair8">
+						<img src="img/hairstyle/center/male.jpg" alt="">
+					</a>
+				</li>				
+				<li class="itembox hairstyle medium">
+					<a href="img/hairstyle/medium/medium.jpg" data-title="メディアム" data-id="hair8">
+						<img src="img/hairstyle/medium/medium.jpg" alt="">
+					</a>
+				</li>
+				<li class="itembox haircolor inner">
+					<a href="img/haircolor/inner/B158194369.jpg" data-title="ボブインナーピンク" data-id="hair3">
+						<img src="img/haircolor/inner/B158194369.jpg" alt="">
+					</a>
+				</li>
+				<li class="itembox hairarrange braid">
+					<a href="img/hairarrange/braid/braid.jpeg" data-title="三つ編み" data-id="hair9">
+						<img src="img/hairarrange/braid/braid.jpeg" alt="">
+					</a>
+				</li>
+				<li class="itembox haircolor dark">
+					<a href="img/haircolor/dark/2cf7033d8b83dfa1dc306a83-1712128575.png.webp" data-title="青髪ロング" data-id="hair10">
+						<img src="img/haircolor/dark/2cf7033d8b83dfa1dc306a83-1712128575.png.webp" alt="">
+					</a>
+				</li>
+				<li class="itembox men hairstyle twoblock">
+					<a href="img/hairstyle/mash/72f4b600-fb0b-40a5-b958-f0a028c7a2fd.jpg" data-title="マッシュ" data-id="hair11">
+						<img src="img/hairstyle/mash/72f4b600-fb0b-40a5-b958-f0a028c7a2fd.jpg" alt="">
+					</a>
+				</li>
+				<li class="itembox hairarrange curly">
+					<a href="img/hairarrange/curly/b292036c-d51c-464a-820d-678a8db16c17.jpg" data-title="編み込み" data-id="hair12">
+						<img src="img/hairarrange/curly/b292036c-d51c-464a-820d-678a8db16c17.jpg" alt="">
+					</a>
+				</li>
+				<li class="itembox haircolor inner">
+					<a href="img/haircolor/inner/B168361639.jpg" data-title="ボブインナーピンク" data-id="hair3">
+						<img src="img/haircolor/inner/B168361639.jpg" alt="">
+					</a>
+				</li>
+				<li class="itembox haircolor inner">
+					<a href="img/haircolor/inner/inner2.jpeg" data-title="オレンジ髪ロング" data-id="hair13">
+						<img src="img/haircolor/inner/inner2.jpeg" alt="">
+					</a>
+				</li>
+				<li class="itembox hairstyle short">
+					<a href="img/hairstyle/short/short2.jpg" data-title="ショート" data-id="hair15">
+						<img src="img/hairstyle/short/short2.jpg">
+					</a>
+				</li>
+				<li class="itembox hairstyle long">
+					<a href="img/hairstyle/layer/layer.jpg.webp" data-title="ロング" data-id="hair16">
+						<img src="img/hairstyle/layer/layer.jpg.webp">
+					</a>
+				</li>
+				<li class="itembox hairstyle long">
+					<a href="img/hairstyle/long/long2.jpg" data-title="前髪ありロング" data-id="hair17">
+						<img src="img/hairstyle/long/long2.jpg">
+					</a>
+				</li>
+				<li class="itembox hairstyle bob">
+					<a href="img/hairstyle/bob/bob3.jpg" data-title="ショートボブ" data-id="hair18">
+						<img src="img/hairstyle/bob/bob3.jpg">
+					</a>
+				</li>
+				<li class="itembox hairstyle bob">
+					<a href="img/hairstyle/bob/bob_kr.webp" data-title="タッセルボブ" data-id="hair19">
+						<img src="img/hairstyle/bob/bob_kr.webp">
+					</a>
+				</li>
+				<li class="itembox hairstyle bob">
+					<a href="img/hairstyle/bob/bob_kr2.webp" data-title="オレンジ髪タッセルボブ" data-id="hair20">
+						<img src="img/hairstyle/bob/bob_kr2.webp">
+					</a>
+				</li>
+				<li class="itembox hairstyle bob">
+					<a href="img/hairstyle/bob/bob_l.jpeg" data-title="ロングボブ" data-id="hair21">
+						<img src="img/hairstyle/bob/bob_l.jpeg">
+					</a>
+				</li>
+				<li class="itembox men hairstyle twoblock">
+					<a href="img/hairstyle/twoblock/exif_temp_image37.jpg" data-title="ツーブロック" data-id="hair16">
+						<img src="img/hairstyle/twoblock/exif_temp_image37.jpg">
+					</a>
+				</li>
+				<li class="itembox hairstyle bob">
+					<a href="img/hairstyle/bob/bob_l2.jpeg" data-title="ロングボブ" data-id="hair22">
+						<img src="img/hairstyle/bob/bob_l2.jpeg">
+					</a>
+				</li>
+				<li class="itembox hairstyle medium">
+					<a href="img/hairstyle/medium/medium2.jpg" data-title="ミディアム" data-id="hair23">
+						<img src="img/hairstyle/medium/medium2.jpg">
+					</a>
+				</li>
+				<li class="itembox hairstyle layer">
+					<a href="img/hairstyle/layer/layer_l.jpg.webp" data-title="レイヤーロング" data-id="hair24">
+						<img src="img/hairstyle/layer/layer_l.jpg.webp">
+					</a>
+				</li>
+				<li class="itembox men hairstyle mash">
+					<a href="img/hairstyle/mash/81AB5E3D-27DD-4260-9866-8CBCE0CD15E5-thumb-autox1067-34411.jpeg" data-title="ロング" data-id="hair16">
+						<img src="img/hairstyle/mash/81AB5E3D-27DD-4260-9866-8CBCE0CD15E5-thumb-autox1067-34411.jpeg">
+					</a>
+				</li>
+				<li class="itembox hairstyle ash">
+					<a href="img/haircolor/ash/ash2.jpeg" data-title="ロングボブ" data-id="hair25">
+						<img src="img/haircolor/ash/ash2.jpeg">
+					</a>
+				</li>
+				<li class="itembox men hairstyle slickback">
+					<a href="img/hairstyle/slickback/8a7ebeaf123fe7f46072d096e4bdb22f.jpg" data-title="オールバック" data-id="hair16">
+						<img src="img/hairstyle/slickback/8a7ebeaf123fe7f46072d096e4bdb22f.jpg">
+					</a>
+				</li>
+				<li class="itembox hairstyle cool">
+					<a href="img/haircolor/cool/blue.jpeg" data-title="ロングボブ" data-id="hair26">
+						<img src="img/haircolor/cool/blue.jpeg">
+					</a>
+				</li>
+				<li class="itembox men hairstyle perm">
+					<a href="img/hairstyle/perm/2d7ebf3d0ed2f1da008eeb5625d6df33.jpg" data-title="ロング" data-id="hair16">
+						<img src="img/hairstyle/perm/2d7ebf3d0ed2f1da008eeb5625d6df33.jpg">
+					</a>
+				</li>
+				<li class="itembox hairarrange curly">
+					<a href="img/hairarrange/curly/curly.jpeg" data-title="ロング巻き髪" data-id="hair27">
+						<img src="img/hairarrange/curly/curly.jpeg">
+					</a>
+				</li>
+				<li class="itembox men haircolor highlight">
+					<a href="img/hairstyle/center/240223_blog_mens_highlight6.jpeg" data-title="センター分けハイライト" data-id="hair27">
+						<img src="img/hairstyle/center/240223_blog_mens_highlight6.jpeg">
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+
+	<div id="modal">
+		<span id="modal-close"><i class="fas fa-times"></i></span> <!-- webアイコン-->
+		<img id="modal-img" class="modal-content">
+		<p id="modal-title" class="modal-title"></p>
+		<span id="modal-favorite"><i class="fa-solid fa-heart"></i></span> <!-- アイコン -->
+	</div>
+	  
+
+	<!-- フッター -->
+	<footer>
+		<div class="footer-bottom">
+			<p>&copy; 2025 BLU:Me. All rights reserved.</p>
+		</div>
+	</footer>
+	
+	<!-- js読み込み -->
+	<!-- jQuery -->
+	<script src="js/jquery-3.7.1.min.js"></script>
+	<!-- masonry：グリッドレイアウトが実装できるライブラリ -->
+	<script src="js/masonry.pkgd.min.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v6.6.0/js/all.js"></script>
+	<!-- 自身のjs -->
+	
+	<script src="js/slick.min.js"></script>
+	<script src="js/main.js"></script>
+	
+</body>
+</html>
