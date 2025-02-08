@@ -105,27 +105,27 @@ nav.open-heart{
 
 /* スライドショー*/
 .slider {
-	padding-top: 7%;
+    padding-top: 7%;
     overflow: hidden;
     width: 100%;
     max-width: 1200px;
-    height: 85vh;
+    min-height: 80vh; /* 高さを統一 */
     margin: 0 auto;
     position: relative;
 }
 
 /* スライドの画像設定 */
 .slider .slick-slide {
-    display: flex !important; /* スライドが非表示にならないようにする */
-    justify-content: center;
-    align-items: center;
+    text-align: center; /* 画像を中央揃え */
 }
 
 .slider img {
     width: 100%;
-    object-fit: contain;
-    object-position:center;
+    max-height: 80vh; /* 画像の高さを統一 */
+    object-fit: cover; /* 画像を全体表示に */
+    object-position: center;
 	aspect-ratio: 3 / 2;
+
 }
 
 @keyframes fadezoom {
@@ -192,6 +192,7 @@ nav.open-heart{
 	color:#666;
 	border-color: #6B4F4F;
 	font-size: 20px;
+	font-family: "Noto Sans JP", sans-serif !important;
 }
 
 
@@ -226,7 +227,10 @@ nav.open-heart{
     opacity: 1.0;
 }
 
-  
+#filter-favorite {
+    pointer-events: auto !important;
+}
+
 
 .contents {
 	width: 920px;
@@ -277,6 +281,7 @@ nav.open-heart{
     background: #fff;
     border: 1px solid #978575;
 	transition: .3s;
+	font-family: "Noto Sans JP", sans-serif !important;
 }
 
 .gnavi__list:hover {
@@ -314,6 +319,7 @@ nav.open-heart{
 	text-align: center;
 	color:#978575;
 	background-color: (151, 133, 117);
+	font-family: "Noto Sans JP", sans-serif !important;
 	
 }
 
@@ -443,7 +449,7 @@ footer {
 		overflow: hidden;
 		width: 100%;
 		max-width: 1200px;
-		height: 35vh;
+		height: 30vh;
 		margin: 0 auto;
 		position: relative;
 	}
@@ -452,6 +458,14 @@ footer {
 		display: flex !important; /* スライドが非表示にならないようにする */
 		justify-content: center;
 		align-items: center;
+	}
+
+	.slider img{
+		width: 100%;
+		max-height: 90vh; /* 画像の高さを統一 */
+		object-fit: cover; /* 画像を全体表示に */
+		object-position: center;
+		aspect-ratio: 3 / 2;
 	}
 
 	#page_top{
