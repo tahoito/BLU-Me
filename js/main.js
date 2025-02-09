@@ -2,12 +2,13 @@ $(function () {
   let count = 0;
 
   function updateCounter() {
+    
     if (count < 80) {
       speed = 10 + (count * 0.8); // 最初は速く、だんだん遅く
     } else if (count >= 80 && count < 90) {
-      speed = 100 + (count - 80) * 10; // 80%から遅く
+      speed = 100 + (count - 80) * 1; // 80%から遅く
     } else {
-      speed = 200 + (count - 90) * 15; // 90%からゆっくり
+      speed = 200 + (count - 90) * 5; // 90%からゆっくり
     }
 
     count++;
@@ -20,7 +21,7 @@ $(function () {
         $(".loading_txt").text("BLU:Me"); // 100%後にBLU:Meを表示
         $(".loading_txt2").fadeIn(1000); 
           setTimeout(function () {
-            $(".loader").fadeOut(700); // 全体をフェードアウト
+            $(".loader").fadeOut(500); // 全体をフェードアウト
             $("header, #search").fadeIn(1000); // ヘッダーと検索ボックスを表示
             startSlider();
           }, 1500); 
