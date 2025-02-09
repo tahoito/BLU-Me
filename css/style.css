@@ -195,6 +195,11 @@ nav.open-heart{
 	font-family: "Noto Sans JP", sans-serif !important;
 }
 
+input::placeholder {
+	color: gray;
+	font-size: 16px;
+}
+
 
 #btn {
 	color: #6B4F4F;
@@ -527,6 +532,11 @@ footer {
 		border-color: #6B4F4F;
 		font-size: 15px;
 	}
+	input::placeholder {
+		color: gray;
+		font-size: 10px;
+	}
+	
 	
 	#btn {
 		color: #6B4F4F;

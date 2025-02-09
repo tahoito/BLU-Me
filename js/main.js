@@ -8,10 +8,9 @@ $(function () {
       setTimeout(function () {
         $(".loading_txt").text("BLU:Me");
         setTimeout(function () {
-          $(".loader").fadeOut("slow");
-          $(".loading_txt").fadeOut("slow", function () {
-            $("header, #search").fadeIn(1000);
-          });
+          $(".loader, .loading_txt").hide(); // ローディング画面を非表示にする
+          $("header, #search").show(); // ヘッダーと検索ボックスを即座に表示
+          startSlider();
         }, 1000); // 「BLU:Me」を少し見せてからフェードアウト
       }, 500); // 100%達成後、少し待って「BLU:Me」を表示
     }
@@ -19,6 +18,7 @@ $(function () {
 
   // 初期状態でヘッダーと検索ボックスを非表示
   $("header, #search").hide();
+  $(".slider").hide();
 });
 
 
@@ -195,23 +195,26 @@ $(window).scroll(function () {
 });
 
 /*スライド*/
-$('.slider')
-  .slick({
-    autoplay: true,
-    infinite: true,
-    fade: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    speed: 2000,
-    autoplaySpeed: 3000,
-    pauseOnFocus: false,
-    pauseOnHover: false
-  })
-  .on("beforeChange", function (event, slick, currentSlide, nextSlide) {
-    $(".slick-slide", this).removeClass("slick-animation"); // 🔥 すべてのスライドの `slick-animation` を削除
-    $(".slick-slide", this).eq(nextSlide).addClass("slick-animation"); // 🔥 次のスライドに `slick-animation` を付与
-  });
+function startSlider() {
+  $(".slider").show();
+    $('.slider')
+    .slick({
+      autoplay: true,
+      infinite: true,
+      fade: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      speed: 2000,
+      autoplaySpeed: 3000,
+      pauseOnFocus: false,
+      pauseOnHover: false
+    })
+    .on("beforeChange", function (event, slick, currentSlide, nextSlide) {
+      $(".slick-slide", this).removeClass("slick-animation"); // 🔥 すべてのスライドの `slick-animation` を削除
+      $(".slick-slide", this).eq(nextSlide).addClass("slick-animation"); // 🔥 次のスライドに `slick-animation` を付与
+    });
+}
 
 
 
