@@ -1,5 +1,6 @@
 # BLU-Me
 
+リンク：https://tahoito.github.io/BLU-Me/
 <h2>「BLU:Me」は学校の課題で作ったギャラリーサイトです。</h2>
 
 <h3>BLU:Meとは</h3>
