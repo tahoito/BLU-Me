@@ -2,7 +2,14 @@ $(function () {
   let count = 0;
 
   function updateCounter() {
-    let speed = 20 + (Math.pow(count, 2) * 0.02); // 最初は速く、後半は遅く
+    if (count < 80) {
+      speed = 10 + (count * 0.8); // 最初は速く、だんだん遅く
+    } else if (count >= 80 && count < 90) {
+      speed = 100 + (count - 80) * 10; // 80%から遅く
+    } else {
+      speed = 200 + (count - 90) * 15; // 90%からゆっくり
+    }
+
     count++;
     $(".loading_txt").text(count + "%"); // 数字を更新
 
@@ -16,14 +23,14 @@ $(function () {
             $(".loader").fadeOut(700); // 全体をフェードアウト
             $("header, #search").fadeIn(1000); // ヘッダーと検索ボックスを表示
             startSlider();
-          }, 1500); // 1.5秒後にローディング画面を消す
-      }, 500); // 100%後 0.5秒待って「BLU:Me」を表示
+          }, 1500); 
+      }, 500);
     }
   }
 
   updateCounter(); // カウントアップ開始
 
-  // 初期状態で「毎日のヘアスタイルをもっと楽しく」を非表示
+
   $(".loading_txt2").hide();
   $("header, #search, .slider").hide();
 });
