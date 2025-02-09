@@ -18,7 +18,7 @@ body:after {
     width: 100%;
     height: 100%;
     /*background: linear-gradient(to bottom, #dfddda 0%, #cbb897 100%);*/
-	background: linear-gradient(to bottom, #eeeae4 0%, #d0c9bd 100%);
+	background: linear-gradient(to bottom, #eeeae4 0%, #cec5b5 100%);
     z-index: -1; /* 背景を後ろに送る */
     display: block; /* 明示的にブロック要素として扱う */
 }
@@ -92,10 +92,23 @@ nav.open-heart{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column; /*縦方向に並べる！ */
+}
+
+.loading_txt {
 	font-family: 'Caveat', cursive;
 	color: #6B4F4F;
 	font-size: 5vw;
+	position: relative;
 }
+
+.loading_txt2 {
+	color: #6B4F4F;
+	font-size: 18px;
+	text-align: center; 
+	font-family: "Noto Sans JP", sans-serif !important;
+}
+
 
 .loading-active header,
 .loading-active #search {
