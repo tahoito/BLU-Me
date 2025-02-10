@@ -22,7 +22,7 @@ $(function () {
         $(".loading_txt2").fadeIn(1000); 
           setTimeout(function () {
             $(".loader").fadeOut(500); // 全体をフェードアウト
-            $("header, #search").fadeIn(1000); // ヘッダーと検索ボックスを表示
+            $("header, #search").fadeIn(800); // ヘッダーと検索ボックスを表示
             startSlider();
           }, 1500); 
       }, 500);
