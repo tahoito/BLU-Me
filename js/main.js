@@ -196,7 +196,7 @@ $(function () {
 
 });
 
-//scroll_effect
+/*scroll_effect*/
 $(window).scroll(function () {
   var scrollAnimationElm = document.querySelectorAll('.scroll_up');
   var scrollAnimationFunc = function () {
@@ -210,6 +210,8 @@ $(window).scroll(function () {
   window.addEventListener('load', scrollAnimationFunc);
   window.addEventListener('scroll', scrollAnimationFunc);
 });
+
+
 
 /*スライド*/
 function startSlider() {
@@ -228,8 +230,8 @@ function startSlider() {
       pauseOnHover: false
     })
     .on("beforeChange", function (event, slick, currentSlide, nextSlide) {
-      $(".slick-slide", this).removeClass("slick-animation"); // 🔥 すべてのスライドの `slick-animation` を削除
-      $(".slick-slide", this).eq(nextSlide).addClass("slick-animation"); // 🔥 次のスライドに `slick-animation` を付与
+      $(".slick-slide", this).removeClass("slick-animation"); 
+      $(".slick-slide", this).eq(nextSlide).addClass("slick-animation");
     });
 }
 
@@ -239,25 +241,24 @@ function startSlider() {
 /*スムーススクロール*/
 $(function () {
   var topBtn = $('#page_top');
-  topBtn.hide();
+  topBtn.hide(); // 最初は非表示
 
-  $(window).scroll(function () { //スクロールされた時の実行
+  // スクロールイベント
+  $(window).on('scroll', function () {
     if ($(this).scrollTop() > 100) {
-      topBtn.fadeIn();
+      topBtn.fadeIn(); // 100px以上スクロールしたら表示
     } else {
-      topBtn.fadeOut();
+      topBtn.fadeOut(); // 100px未満なら非表示
     }
-
   });
 
-  topBtn.click(function () { //スムーススムロールのコード
-    $('body,html').animate({
-      scrollTop: 0
-    }, "swing");
-    return false;
-  })
-
+  // スムーススクロール
+  topBtn.click(function (event) {
+    event.preventDefault(); // デフォルトの動作を防ぐ
+    $('html, body').animate({ scrollTop: 0 }, 500, "swing");
+  });
 });
+
 
 /*ドロップダウンぼたん*/
 // ボタンをクリックしたときにドロップダウンを表示/非表示

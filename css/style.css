@@ -162,18 +162,21 @@ nav.open-heart{
 
   
 
-#page_top{
-	width:50px;
-	height:50px;
-	position:fixed;
-	right:10px;
-	bottom:10px;
+#page_top {
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
 	border-radius: 50%;
-	background:#aa9f95;
-	opacity:0.9;
+	background: #aa9f95;
+	opacity: 0.9;
+	cursor: pointer; /* クリックしやすくする */
+	z-index: 9999; /* 他の要素より前面に */
+	display: none; /* 最初は非表示 */
   }
-
-#page_top::before {
+  
+  #page_top::before {
 	font-family: 'Font Awesome 5 Free';
 	font-weight: 900;
 	content: '\f102';
@@ -182,8 +185,9 @@ nav.open-heart{
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	translate: -50% -50%;
-	}
+	transform: translate(-50%, -50%); /* 修正 */
+  }
+  
 
 
 /*検索フォーム*/
@@ -255,20 +259,30 @@ input::placeholder {
 	padding: 30px 0;
 	margin: 0 auto;
 }
+
 .grid {
 	display: flex;
-	justify-content: space-between;
-}
-.itembox {
+	flex-wrap: wrap; /* 要素が収まらない場合に折り返す */
+	justify-content: space-between; /* 均等配置 */
+	align-items: stretch; /* 高さを揃える */
+  }
+  
+  .itembox {
 	width: 24%;
 	margin-top: 10px;
 	text-align: center;
 	overflow: hidden;
-}
-.itembox img{
+	display: flex; /* 画像を中央揃え */
+	flex-direction: column; /* 子要素を縦方向に配置 */
+	align-items: center;
+  }
+  
+  .itembox img {
 	width: 100%;
 	height: auto;
-}
+	object-fit: cover; /* サイズを統一する */
+  }
+  
 
 .itembox a{
     display: block;
@@ -467,7 +481,7 @@ footer {
 		overflow: hidden;
 		width: 100%;
 		max-width: 1200px;
-		height: 30vh;
+		height: 25vh;
 		margin: 0 auto;
 		position: relative;
 	}
@@ -480,24 +494,27 @@ footer {
 
 	.slider img{
 		width: 100%;
-		max-height: 90vh; /* 画像の高さを統一 */
 		object-fit: cover; /* 画像を全体表示に */
 		object-position: center;
 		aspect-ratio: 3 / 2;
 	}
 
-	#page_top{
-		width:40px;
-		height:40px;
-		position:fixed;
-		right:10px;
-		bottom:10px;
+
+	#page_top {
+		width: 40px;
+		height: 40px;
+		position: fixed;
+		right: 10px;
+		bottom: 10px;
 		border-radius: 50%;
-		background:#aa9f95;
-		opacity:0.9;
-		z-index:1000;
+		background: #aa9f95;
+		opacity: 0.9;
+		cursor: pointer; /* クリックしやすくする */
+		z-index: 9999; /* 他の要素より前面に */
+		display: none; /* 最初は非表示 */
 	  }
-	#page_top::before {
+	  
+	  #page_top::before {
 		font-family: 'Font Awesome 5 Free';
 		font-weight: 800;
 		content: '\f102';
@@ -506,8 +523,8 @@ footer {
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		translate: -50% -50%;
-		}
+		transform: translate(-50%, -50%); /* 修正 */
+	  }
 
 	.logo{
 		font-size:6vw;
@@ -575,6 +592,21 @@ footer {
 		padding: 5px 10px;
 		text-align: center;
 	}
+
+	.loading_txt {
+		font-family: 'Caveat', cursive;
+		color: #6B4F4F;
+		font-size: 35px;
+		position: relative;
+	}
+	
+	.loading_txt2 {
+		color: #6B4F4F;
+		font-size: 10px;
+		text-align: center; 
+		font-family: "Noto Sans JP", sans-serif !important;
+	}
+	
 	
 	  
 }
