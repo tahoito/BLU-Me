@@ -268,6 +268,25 @@ $(document).ready(function () {
   );
 });
 
+  // ===== デバイス別ドロップダウン対応 =====
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    $(document).on('click', '.gnavi__list', function () {
+      console.log("スマホドロップダウン");
+      $(this).find('.dropdown__lists').stop(true, true).slideToggle(200);
+    });
+  } else {
+    $('.gnavi__list').hover(
+      function () {
+        console.log("スマホドロップダウン")
+        $(this).children('.dropdown__lists').stop(true, true).slideDown(200);
+      },
+      function () {
+        console.log("スマホドロップダウン")
+        $(this).children('.dropdown__lists').stop(true, true).slideUp(200);
+      }
+    );
+  }
+
 document.addEventListener("DOMContentLoaded", function () {
 
   // モーダルを閉じる
@@ -331,6 +350,44 @@ function searchItems() {
   if (matchedItems.length > 0) {
     $('.itembox').hide();
     $(matchedItems).show().fadeIn(200);
+    $(matchedItems).css('display', 'block'); 
+  } else {
+    $('#itemContainer').html('<p style="text-align:center;">該当する画像がありません</p>');
+  }
+}
+
+function searchItemssp() {
+  var $grid = $('.grid');
+  const searchTerm = $('#box-sp').val()?.toLowerCase().trim();
+  const container = $('#itemContainer');
+
+  if (!searchTerm || searchTerm === '') {
+    // 🔹 入力が空の場合、すべての画像をフェードイン
+    $('.itembox').fadeOut(200, function () {
+      $(this).show().appendTo(container).fadeIn(200);
+    });
+    return;
+  }
+
+  const items = $('.itembox');
+  let matchedItems = [];
+
+  items.each(function () {
+    const title = $(this).find('a').attr('data-title')?.toLowerCase().trim();
+    if (title && title.includes(searchTerm)) {
+      matchedItems.push(this);
+    } else {
+      $(this).fadeOut(200); // 一致しないアイテムをフェードアウト
+    }
+    $grid.masonry('layout');
+  });
+
+  console.log("一致したアイテム数:", matchedItems.length);
+
+  if (matchedItems.length > 0) {
+    $('.itembox').hide();
+    $(matchedItems).show().fadeIn(200);
+    $(matchedItems).css('display', 'block'); 
   } else {
     $('#itemContainer').html('<p style="text-align:center;">該当する画像がありません</p>');
   }
@@ -341,14 +398,13 @@ $(function () {
   // 検索ボタンがクリックされたとき
   $('#btn').on('click', function (event) {
     event.preventDefault();
-    searchItems();
+    searchItems($('#box').val());
   });
-
-  // Enterキーで検索
+  
   $('#box').on('keydown', function (event) {
     if (event.key === 'Enter') {
       event.preventDefault();
-      searchItems();
+      searchItems($('#box').val());
     }
   });
 
@@ -363,6 +419,29 @@ $(function () {
   $("#keyword").on("input", searchItems);
 });
 
+$(function () {
+  // 検索ボタンがクリックされたとき
+  $('#btn-sp').on('click', function (event) {
+    event.preventDefault();
+    searchItemssp($('#box-sp').val());
+  });
+  
+  $('#box-sp').on('keydown', function (event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      searchItemssp($('#box-sp').val());
+    }
+  });
 
+  // 検索アイコンのトグル動作
+  $('.search_bottom').on('click', function () {
+    $('#search-sp').prop('checked', function (i, val) {
+      return !val;
+    });
+  });
+
+  //"input"イベントを監視（リアルタイム検索）
+  $("#keyword").on("input", searchItemssp);
+});
 
 // 出展：株式会社シフトブレイン『jQuery最高の教科書』第6章
