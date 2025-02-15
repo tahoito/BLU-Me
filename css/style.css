@@ -62,6 +62,13 @@ nav.open-heart{
 	width:70%;
 }
 
+.sm-title{
+	display: none;
+}
+
+.sm-search{
+	display: none;
+}
 
 .logo{
 	color:#6B4F4F;
@@ -172,7 +179,6 @@ nav.open-heart{
 	background: #aa9f95;
 	opacity: 0.9;
 	cursor: pointer; /* クリックしやすくする */
-	z-index: 9999; /* 他の要素より前面に */
 	display: none; /* 最初は非表示 */
   }
   
@@ -188,7 +194,9 @@ nav.open-heart{
 	transform: translate(-50%, -50%); /* 修正 */
   }
   
-
+.sp-search{
+	display: none;
+}
 
 /*検索フォーム*/
 #search {
@@ -234,7 +242,6 @@ input::placeholder {
   #btn i {
 	margin: 0; /* アイコンの余計な余白を削除 */
   }
-  
 
 
 /* コンテンツ
@@ -281,18 +288,68 @@ input::placeholder {
 	width: 100%;
 	height: auto;
 	object-fit: cover; /* サイズを統一する */
+	transition: transform 0.3s ease-in-out;
   }
   
 
-.itembox a{
+/* 画像を `<a>` に追加してもデザインを適用 */
+.itembox a {
     display: block;
-    transition: all .3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-decoration: none; /* リンクの下線を消す */
+}
+
+/* 画像の設定 */
+.itembox a img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* サイズを統一する */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* オーバーレイ（暗いフィルター） */
+.itembox a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0); /* 初期状態は透明 */
+    transition: background 0.3s ease-in-out;
+}
+
+/* 文字を中央に配置（初期状態は透明） */
+.itembox a .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2;
+    opacity: 0; /* 初期状態では非表示 */
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* ★ ホバー時の動き（画像ズーム + フィルター追加 + 文字表示） */
+.itembox a:hover img {
     transform: scale(1.1);
 }
 
-.itembox a:hover{
-    transform: scale(1);
+.itembox a:hover::after {
+    background: rgba(0, 0, 0, 0.5);
 }
+
+.itembox a:hover .overlay-text {
+    opacity: 1;
+}
+
+
 
 /* フィルターボタン */
 .filter-button {
@@ -300,32 +357,78 @@ input::placeholder {
 	padding: 0;
 	display: flex;
 	justify-content: center;
-}
+	flex-wrap: nowrap; /* PCでは改行しない */
+  	margin-top: 20px;
+} 
 	
 /* 親ボタンの位置 */
 .gnavi__list {
-    margin-right: 20px; /* ボタン間の間隔 */
-    position: relative; /* 下のドロップダウンを基準にするため */
-    padding: 10px 20px;
-    color: #978575;
-    text-align: center;
-    cursor: pointer;
-    background: #fff;
-    border: 1px solid #978575;
-	transition: .3s;
+	margin-right: 20px; /* ボタン間の間隔 */
+	position: relative;
+	padding: 10px 20px;
+	text-align: center;
+	cursor: pointer;
+	background: #fff;
+	border: 1px solid #978575;
+	color: #978575;
+	transition: 0.3s;
 	font-family: "Noto Sans JP", sans-serif !important;
-}
-
-.gnavi__list:hover {
+  }
+  
+  /* ======== 共通Hover効果（全体の統一感UP） ======== */
+  .gnavi__list:hover {
 	color: #fff;
-	background: #978575;
-}
+	background: #978575; /* ベースは同じブラウン系 */
+  }
+  
+  /* ======== 選択中ボタン（共通） ======== */
+  .gnavi__list.active {
+	background: #5f4635;
+	color: #fff;
+	border-color: #5f4635;
+  }
+  
+  /* ======== Women ボタン ======== */
+  
+  #women-filter:hover {
+	background-color: #D9A7A0; /* くすみピンク */
+	color: #fff;
+	border-color: #D9A7A0;
+  }
+  
+  #women-filter.active {
+	background-color: #A56A5C; /* 深いローズ */
+	color: #fff;
+	border-color: #A56A5C;
+  }
+  
+  /* ======== Men ボタン ======== */  
+  #men-filter:hover {
+	background-color: #8B9EA5; /* ブルーグレー */
+	color: #fff;
+	border-color: #8B9EA5;
+  }
+  
+  #men-filter.active {
+	background-color: #5B6D73; /* 深いネイビーグレー */
+	color: #fff;
+	border-color: #5B6D73;
+  }
+  
+  #filter-favorite{
+	font-size: 20px;
+  }
 
-.gnavi__list.active {
-    background: #5f4635;  /* 濃いブラウン */
-    color: #fff;
-    border-color: #5f4635; /* ボーダーも統一 */
-}
+  #filter-favorite1:hover{
+	background-color: #fff; /* 深いネイビーグレー */
+	color: #ffa1a1;
+  }
+
+  #filter-favorite1.active{
+	background-color: #fff; /* 深いネイビーグレー */
+	color: #f45e5e;
+  }
+
 
 /* ドロップダウンメニューが非表示になる */
 .dropdown__lists {
@@ -373,6 +476,39 @@ input::placeholder {
     display: block;
 }
 
+#short, 
+#bob, 
+#medium, 
+#long, 
+#wolf, 
+#layer {
+  transition: background-color 0.3s ease;
+}
+
+#short:hover, 
+#bob:hover, 
+#medium:hover, 
+#long:hover, 
+#wolf:hover, 
+#layer:hover {
+  background-color: #D9A7A0; /* くすみピンク (女性スタイル) */
+}
+
+#twoblock, 
+#perm, 
+#slickback, 
+#mash {
+  transition: background-color 0.3s ease;
+}
+
+#twoblock:hover, 
+#perm:hover, 
+#slickback:hover, 
+#mash:hover,
+#center:hover {
+  background-color: #8B9EA5; /* ブルーグレー (男性スタイル) */
+}
+
 	
 
 /*モーダルウィンドウ*/
@@ -409,6 +545,22 @@ input::placeholder {
     color: #ffffff;
     cursor: pointer;
 }
+
+#modal-prev, #modal-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+#modal-prev { left: 15px; } /* 左側 */
+#modal-next { right: 15px; } /* 右側 */
 
 #modal-favorite {
 	position: absolute;
@@ -467,38 +619,128 @@ footer {
 	body {
 		margin: 0;
 	}
-	.filter-button li {
+
+	.logo{
+		font-size:7vw;
+		padding-left: 3%;
+		font-family: 'Caveat', cursive;
+		/*padding-top: 10px;*/
+		padding: 10px 15px;
+	}
+
+	/* ===== スライダー調整 (横に少し余白) ===== */
+	.slider {
+		padding-top: 10%;
+		overflow: hidden;
+		width: 92%;
+		max-width: 600px;
+		min-height: 50vh; 
+		margin: 30px auto;
+	}
+	
+	.slider img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 12px;
+	  }
+	
+	.sub-title {
+		display: none;
+	}
+
+	#search, #box, #btn{
+		display: none;
+	}
+
+	.sp-search {
+		position: absolute; /* ヘッダー下の中央に配置 */
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#search-sp{
+		display: flex; /* フレックスボックスで余白をなくす */
+		gap: 0; /* 隙間をゼロに設定 */
+		margin-top: 16px;
+		position:relative;
+	}
+ 
+	  /* ===== スマホ版の入力欄 ===== */
+	#box-sp {
+		width: 200px;
+		padding: 0px 15px;
+		border-radius:4px 0 0 4px;
+		border-color: #6B4F4F;
+		background:#ffffff;
+		border:none;
+		outline:0;
+		font-size: 15px;
+		font-family: "Noto Sans JP", sans-serif !important;
+		color: #666;
+	}
+	  
+	#box-sp::placeholder {
+		color: gray;
 		font-size: 14px;
 	}
-	.contents {
-		width: calc(100% - 20px);
+
+	#btn-sp {
+		font-size: 18px;
+		color: #6B4F4F;
+		cursor: pointer;
+		transition: all 0.3s;
+		border: none;
+		position: absolute;
+		right:10px;
 	}
-	.itembox {
-		width: 48%;
-	}
-	.slider {
-		padding-top: 15%;
-		overflow: hidden;
-		width: 100%;
-		max-width: 1200px;
-		height: 15vh;
-		margin: 0 auto;
-		position: relative;
+	  
+	#btn-sp:hover {
+		color: #beb7b2;
+	  
 	}
 
-	.slider .slick-slide {
-		display: flex !important; /* スライドが非表示にならないようにする */
+	.filter-button {
+		display: grid;
+		grid-template-columns: repeat(4, auto); /* 3列配置 */
 		justify-content: center;
-		align-items: center;
-	}
+		gap: 3px; /* ボタン間の間隔を少なめに */
+	  }
+	
+	  /* スマホ版ボタン：余白を小さくし、横幅を抑える */
+	  .gnavi__list {
+		padding: 5px 15px; /* 余白を最小限に */
+		font-size: 12px; /* フォントを少し小さめに */
+		text-align: center;
+		white-space: nowrap; /* 折り返しを防止 */
+		overflow: hidden;
+		text-overflow: ellipsis; /* 長い文字は「…」に省略 */
+		margin-top: 10px;
+	  }
+	
+	  /* スマホでハートアイコン調整 */
+	  #filter-favorite1 {
+		font-size: 15px;
+	  }
 
-	.slider img{
-		width: 100%;
-		object-fit: cover; /* 画像を全体表示に */
-		object-position: center;
-		aspect-ratio: 3 / 2;
-	}
+	.contents {
+		width: 90%;
+		padding: 15px 10px;
+		margin: 0 auto;
+	  }
 
+	.grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 8px;
+	  }
+	  .itembox img {
+		height: 120px;
+	  }
+	  
 
 	#page_top {
 		width: 40px;
@@ -510,7 +752,6 @@ footer {
 		background: #aa9f95;
 		opacity: 0.9;
 		cursor: pointer; /* クリックしやすくする */
-		z-index: 9999; /* 他の要素より前面に */
 		display: none; /* 最初は非表示 */
 	  }
 	  
@@ -524,75 +765,8 @@ footer {
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%); /* 修正 */
-	  }
-
-	.logo{
-		font-size:7vw;
-		padding-left: 3%;
-		font-family: 'Caveat', cursive;
-		/*padding-top: 10px;*/
-		padding: 10px 15px;
-		}
-
-	.sub-title h2{
-		font-size:15px;
-		text-align: center;
-		padding-bottom:3%;
-	}
-
-	nav ul{
-		display:flex;
-		list-style-type: none;
-		justify-content: space-around;
-		padding-top:5px;
-	}
-
-	.itembox img{
-		width: 80%;
-		height: auto;
-	}
-
-	
-	#box{
-		width:150px;
-		border-radius:4px 0 0 4px;
-		background:#ffffff;
-		border:none;
-		outline:0;
-		color:#666;
-		border-color: #6B4F4F;
-		font-size: 15px;
-	}
-	input::placeholder {
-		color: gray;
-		font-size: 10px;
-	}
-	
-	
-	#btn {
-		color: #6B4F4F;
-		font-size: 15px;
-		cursor: pointer;
-		transition: all 0.3s;
-		position: absolute;
-		right:10px;
-	}
-	  
-	#btn:hover {
-		color: #beb7b2;
-	}
-	  
-	#btn i {
-		margin: 0; /* アイコンの余計な余白を削除 */
 	}
 		
-	/* 親ボタンの位置 */
-	.gnavi__list {
-		margin-right: 5px; /* ボタン間の間隔 */
-		position: relative; /* 下のドロップダウンを基準にするため */
-		padding: 5px 10px;
-		text-align: center;
-	}
 
 	.loading_txt {
 		font-family: 'Caveat', cursive;
@@ -607,9 +781,17 @@ footer {
 		text-align: center; 
 		font-family: "Noto Sans JP", sans-serif !important;
 	}
-	
-	
-	  
+}
+
+@media screen and (max-width: 1024px) {
+	.slider {
+	  width: 90%;
+	  height: 45vh;
+	}
+  
+	.slider img {
+	  aspect-ratio: 16 / 9;
+	}
 }
 
 @media (max-width: 1024px) {

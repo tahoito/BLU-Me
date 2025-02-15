@@ -96,35 +96,30 @@ $(function () {
     });
   });
 
+
   const likedImages = JSON.parse(localStorage.getItem("likedImages")) || {}; // ローカルストレージから読み込む
   const heart = document.getElementById("modal-favorite");
   const icon = heart.querySelector("i");
 
   // 画像クリックでモーダルを開く
-  $('.itembox a').on('click', function (event) {
-    event.preventDefault();
-
-    var imgSrc = $(this).attr('href');
-    var imgTitle = $(this).data('title');
-    var imageId = $(this).data('id');
-
-    $('#modal-img').attr('src', imgSrc);
-    $('#modal-title').text(imgTitle);
-    $('#modal').fadeIn(200);
-
-    $('#modal').data('currentImageId', imageId);
-
-    // ハートの状態を更新
-    if (likedImages[imageId]) {
-      heart.classList.add("active");
-      icon.classList.remove("fa-regular");
-      icon.classList.add("fa-solid");
-    } else {
-      heart.classList.remove("active");
-      icon.classList.remove("fa-solid");
-      icon.classList.add("fa-regular");
-    }
+  $(function () {
+    $(document).on('click', '.itembox a', function (event) {
+      event.preventDefault();
+  
+      var imgSrc = $(this).attr('href');
+      var imgTitle = $(this).data('title');
+      var imageId = $(this).data('id');
+  
+      $('#modal-img').attr('src', imgSrc);
+      $('#modal-title').text(imgTitle);
+      $('#modal').fadeIn(200);
+  
+      $('#modal').data('currentImageId', imageId);
+    });
   });
+  
+  
+
 
     // フィルター（お気に入りのみ表示）
     $('#filter-favorite1').on('click', function (event) {
@@ -280,54 +275,69 @@ document.addEventListener("DOMContentLoaded", function () {
     $('#modal').fadeOut(200);
   });
 
-
 });
 
+/*
+$('#modal-next').on('click', function () {
+  var currentIndex = $('#modal').data('currentIndex');
+  var nextIndex = (currentIndex + 1) % imageList.length; // ループする
+
+  $('#modal-img').attr('src', imageList[nextIndex].src);
+  $('#modal-title').text(imageList[nextIndex].title);
+  $('#modal').data('currentIndex', nextIndex);
+});
+
+$('#modal-prev').on('click', function () {
+  var currentIndex = $('#modal').data('currentIndex');
+  var prevIndex = (currentIndex - 1 + imageList.length) % imageList.length; // ループする
+
+  $('#modal-img').attr('src', imageList[prevIndex].src);
+  $('#modal-title').text(imageList[prevIndex].title);
+  $('#modal').data('currentIndex', prevIndex);
+});*/
 
 
 
 /*検索ボックス*/
-$(function () {
-  function searchItems() {
-    var $grid = $('.grid');
-    const searchTerm = $('#box').val() ?.toLowerCase().trim();
-    const container = $('#itemContainer');
+//searchItems をグローバルスコープに定義
+function searchItems() {
+  var $grid = $('.grid');
+  const searchTerm = $('#box').val()?.toLowerCase().trim();
+  const container = $('#itemContainer');
 
-
-    if (!searchTerm || searchTerm === '') {
-      // 🔹 入力が空の場合、すべての画像をフェードイン
-      $('.itembox').fadeOut(200, function () {
-        $(this).show().appendTo(container).fadeIn(200);
-      });
-      return;
-    }
-
-    const items = $('.itembox');
-    let matchedItems = [];
-
-    items.each(function (event) {
-      const title = $(this).find('a').attr('data-title') ?.toLowerCase().trim();
-      if (title && title.includes(searchTerm)) {
-        matchedItems.push(this);
-      } else {
-        $(this).fadeOut(200); // 一致しないアイテムをフェードアウト
-      }
-      $grid.masonry('layout');
-      if (event && event.stopPropagation) {
-        event.stopPropagation();
-      }
+  if (!searchTerm || searchTerm === '') {
+    // 🔹 入力が空の場合、すべての画像をフェードイン
+    $('.itembox').fadeOut(200, function () {
+      $(this).show().appendTo(container).fadeIn(200);
     });
-
-    console.log("一致したアイテム数:", matchedItems.length);
-
-    if (matchedItems.length > 0) {
-      $('.itembox').hide();
-      $(matchedItems).show().fadeIn(200);
-    } else {
-      $('#itemContainer').html('<p style="text-align:center;">該当する画像がありません</p>');
-    }
+    return;
   }
 
+  const items = $('.itembox');
+  let matchedItems = [];
+
+  items.each(function () {
+    const title = $(this).find('a').attr('data-title')?.toLowerCase().trim();
+    if (title && title.includes(searchTerm)) {
+      matchedItems.push(this);
+    } else {
+      $(this).fadeOut(200); // 一致しないアイテムをフェードアウト
+    }
+    $grid.masonry('layout');
+  });
+
+  console.log("一致したアイテム数:", matchedItems.length);
+
+  if (matchedItems.length > 0) {
+    $('.itembox').hide();
+    $(matchedItems).show().fadeIn(200);
+  } else {
+    $('#itemContainer').html('<p style="text-align:center;">該当する画像がありません</p>');
+  }
+}
+
+//jQueryのDOM読み込み後にイベント設定
+$(function () {
   // 検索ボタンがクリックされたとき
   $('#btn').on('click', function (event) {
     event.preventDefault();
@@ -348,12 +358,10 @@ $(function () {
       return !val;
     });
   });
+
+  //"input"イベントを監視（リアルタイム検索）
+  $("#keyword").on("input", searchItems);
 });
-
-$("#keyword").on("input", searchItems);
-
-
-
 
 
 
