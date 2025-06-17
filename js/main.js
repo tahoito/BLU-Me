@@ -444,4 +444,27 @@ $(function () {
   $("#keyword").on("input", searchItemssp);
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const selects = document.querySelectorAll(".sp-dropdown select");
+
+    selects.forEach(select => {
+      select.addEventListener("change", function () {
+        const selectedClass = this.value;
+        const items = document.querySelectorAll(".itembox");
+
+        if (selectedClass === "") {
+          items.forEach(item => item.style.display = "block");
+        } else {
+          items.forEach(item => {
+            if (item.classList.contains(selectedClass)) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        }
+      });
+    });
+});
+
 // 出展：株式会社シフトブレイン『jQuery最高の教科書』第6章

@@ -678,57 +678,6 @@ footer {
 		display: none;
 	}
 
-	.sp-search {
-		margin-top: -30%;
-		position: absolute; /* ヘッダー下の中央に配置 */
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	#search-sp{
-		display: flex; /* フレックスボックスで余白をなくす */
-		gap: 0; /* 隙間をゼロに設定 */
-		margin-top: 16px;
-		position:relative;
-	}
- 
-	  /* ===== スマホ版の入力欄 ===== */
-	#box-sp {
-		width: 200px;
-		padding: 0px 15px;
-		border-radius:4px 0 0 4px;
-		border-color: #6B4F4F;
-		background:#ffffff;
-		border:none;
-		outline:0;
-		font-size: 15px;
-		font-family: "Noto Sans JP", sans-serif !important;
-		color: #666;
-	}
-	  
-	#box-sp::placeholder {
-		color: gray;
-		font-size: 14px;
-	}
-
-	#btn-sp {
-		font-size: 18px;
-		color: #6B4F4F;
-		cursor: pointer;
-		transition: all 0.3s;
-		border: none;
-		position: absolute;
-		right:10px;
-	}
-	  
-	#btn-sp:hover {
-		color: #beb7b2;
-	  
-	}
 
 	/*.filter-button {
 		display: grid;
