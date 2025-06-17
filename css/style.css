@@ -353,6 +353,12 @@ input::placeholder {
 
 
 /* フィルターボタン */
+
+.sp-dropdown {
+  display: none;
+}
+
+
 .filter-button {
 	list-style: none;
 	padding: 0;
@@ -618,6 +624,23 @@ footer {
 
 /* スマホ対応
 -------------------------- */
+
+@media (max-width: 768px) {
+  .filter-button { display: none; } 
+
+	.sp-dropdown {
+		display: block;
+		margin: 1em;
+  	}
+
+  	.select {
+    	width: 100%;
+    	font-size: 16px;
+    	padding: 0.5em;
+  	}
+}
+
+
 @media screen and (max-width: 768px) {
 	body {
 		margin: 0;
@@ -707,29 +730,28 @@ footer {
 	  
 	}
 
-	.filter-button {
+	/*.filter-button {
 		display: grid;
-		grid-template-columns: repeat(4, auto); /* 3列配置 */
+		grid-template-columns: repeat(4, auto); 
 		justify-content: center;
-		gap: 3px; /* ボタン間の間隔を少なめに */
+		gap: 3px; 
 		margin-top: -10%;
 	}
-	
-	  /* スマホ版ボタン：余白を小さくし、横幅を抑える */
+
 	.gnavi__list {
-		padding: 5px 15px; /* 余白を最小限に */
-		font-size: 12px; /* フォントを少し小さめに */
+		padding: 5px 15px; 
+		font-size: 12px; 
 		text-align: center;
-		white-space: nowrap; /* 折り返しを防止 */
+		white-space: nowrap; 
 		overflow: hidden;
-		text-overflow: ellipsis; /* 長い文字は「…」に省略 */
+		text-overflow: ellipsis; 
 		margin-top: 10px;
 		margin-right: 10px;
 	}
 	.dropdown__list {
 		cursor: pointer;
-		touch-action: manipulation; /* スマホのタッチを最適化 */
-	}
+		touch-action: manipulation; 
+	}*/
 	
 	/* スマホでハートアイコン調整 */
 	#filter-favorite1 {
