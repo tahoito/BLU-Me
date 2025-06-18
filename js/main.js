@@ -455,6 +455,7 @@ document.querySelectorAll('.sp-tabs .tab').forEach(tab => {
     if (filter !== 'all') {
       document.getElementById(`${filter}-options`).style.display = 'flex';
     } else {
+      document.getElementById(`all-options`).style.display = 'flex';
       document.querySelectorAll('.itembox').forEach(i => i.style.display = 'block');
     }
   });
@@ -464,10 +465,16 @@ document.querySelectorAll('.sp-tabs .tab').forEach(tab => {
 document.querySelectorAll('.option-group button').forEach(btn => {
   btn.addEventListener('click', () => {
     const cls = btn.dataset.class;
+
+    // ボタンの色切り替え
+    document.querySelectorAll('.option-group button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
     document.querySelectorAll('.itembox').forEach(item => {
       item.style.display = item.classList.contains(cls) ? 'block' : 'none';
     });
   });
 });
+
 
 // 出展：株式会社シフトブレイン『jQuery最高の教科書』第6章
