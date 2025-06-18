@@ -139,62 +139,65 @@
 		<li class="gnavi__list" id="filter-favorite1"><i id="filter-favorite" class="fa-solid fa-heart"></i></li>
 	</ul>
 
-	
-	<div class="sp-dropdown">
-		<label for="style-select">Style</label>
-		<select id="style-select">
-			<option value="">スタイルを選択</option>
-			<option value="short">ショート</option>
-			<option value="bob">ボブ</option>
-			<option value="medium">ミディアム</option>
-			<option value="long">ロング</option>
-			<option value="wolf">ウルフヘア</option>
-			<option value="layer">レイヤー</option>
-			<option value="twoblock">ツーブロック</option>
-			<option value="perm">パーマ（Men）</option>
-			<option value="slickback">オールバック</option>
-			<option value="mash">マッシュ</option>
-			<option value="center">センター分け</option>
-		</select>
 
-		<label for="color-select">Color</label>
-		<select id="color-select">
-			<option value="">カラーを選択</option>
-			<option value="high-t">ハイトーン</option>
-			<option value="dark">暗髪</option>
-			<option value="brown">茶髪</option>
-			<option value="inner">インナー</option>
-			<option value="outer">アウター</option>
-			<option value="ombre">グラデーション</option>
-			<option value="highlight">ハイライト</option>
-			<option value="warm">ウォームカラー</option>
-			<option value="cool">クールカラー</option>
-			<option value="ash">アッシュ系</option>
-		</select>
+	<div class="sp-tabs">
+		<button data-filter="all" class="tab active">All</button>
+		<button data-filter="style" class="tab">Style</button>
+		<button data-filter="color" class="tab">Color</button>
+		<button data-filter="hairarrange" class="tab">Arrange</button>
+		<button data-filter="bangs" class="tab">Bangs</button>
+	</div>
 
 
-		<label for="arrange-select">Arrange</label>
-		<select id="arrange-select">
-			<option value="">ヘアアレンジを選択</option>
-			<option value="hairpin">ヘアピン</option>
-			<option value="bun">お団子</option>
-			<option value="curly">巻き髪</option>
-			<option value="braid">三つ編み</option>
-			<option value="french_b">編み込み</option>
-			<option value="halfup">ハーフアップ</option>
-		</select>
+	<div class="sp-options">
+		<div class="option-group" id="all-options" style="display:none;">
+			<button data-class="women-filter">Women</button>
+			<button data-class="men-filter">Men</button>
+		</div>
 
 
-		<label for="bangs-select">Bangs</label>
-		<select id="bangs-select">
-			<option value="">前髪を選択</option>
-			<option value="seethrough">シースルー</option>
-			<option value="blunt">ぱっつん前髪</option>
-			<option value="wide">ワイドバング</option>
-			<option value="side-swept">流し前髪</option>
-			<option value="on">オン眉</option>
-		</select>
-		
+		<div class="option-group" id="style-options" style="display:none;">
+			<button data-class="short">ショート</button>
+			<button data-class="bob">ボブ</button>
+			<button data-class="medium">ミディアム</button>
+			<button data-class="long">ロング</button>
+			<button data-class="wolf">ウルフヘア</button>
+			<button data-class="layer">レイヤー</button>
+			<button data-class="twoblock">ツーブロック</button>
+			<button data-class="perm">パーマ（Men）</button>
+			<button data-class="slickback">オールバック</button>
+			<button data-class="mash">マッシュ</button>
+			<button data-class="center">センター分け</button>
+		</div>
+
+		<div class="option-group" id="color-options" style="display:none;">
+			<button data-class="high-t">ハイトーン</button>
+			<button data-class="dark">暗髪</button>
+			<button data-class="brown">茶髪</button>
+			<button data-class="inner">インナー</button>
+			<button data-class="outer">アウター</button>
+			<button data-class="ombre">グラデーション</button>
+			<button data-class="highlight">ハイライト</button>
+			<button data-class="warm">ウォームカラー</button>
+			<button data-class="cool">クールカラー</button>
+			<button data-class="ash">アッシュ系</button>
+		</div>
+
+		<div class="option-group" id="hairarrange-options" style="display:none;">
+			<button data-class="hairpin">ヘアピン</button>
+			<button data-class="curly">お団子</button>
+			<button data-class="braid">三つ編み</button>
+			<button data-class="french_b">編み込み</button>
+			<button data-class="halfup">ハーフアップ</button>
+		</div>
+
+		<div class="option-group" id="bangs-options" style="display:none;">
+			<button data-class="seethrough">シースルー</button>
+			<button data-class="blunt">ぱっつん前髪</button>
+			<button data-class="wide">ワイドバング</button>
+			<button data-class="side-swept">流し前髪</button>
+			<button data-class="on">オン眉</button>
+		</div>
 	</div>
 
 	
@@ -597,7 +600,7 @@
 						<div class="overlay-text">マッシュ</div>
 					</a>
 				</li>
-				<li class="itembox men hairstyle paerm">
+				<li class="itembox men hairstyle perm">
 					<a href="img/hairstyle/perm/81900084-8d0a-4c0a-a5e9-cf5ad14cdef6.jpg" data-title="パーマ" data-id="hair51">
 						<img src="img/hairstyle/perm/81900084-8d0a-4c0a-a5e9-cf5ad14cdef6.jpg">
 						<div class="overlay-text">パーマ</div>

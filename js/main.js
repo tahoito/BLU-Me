@@ -444,27 +444,30 @@ $(function () {
   $("#keyword").on("input", searchItemssp);
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const selects = document.querySelectorAll(".sp-dropdown select");
+// カテゴリタブ切り替え
+document.querySelectorAll('.sp-tabs .tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
 
-    selects.forEach(select => {
-      select.addEventListener("change", function () {
-        const selectedClass = this.value;
-        const items = document.querySelectorAll(".itembox");
+    const filter = tab.dataset.filter;
+    document.querySelectorAll('.option-group').forEach(opt => opt.style.display = 'none');
+    if (filter !== 'all') {
+      document.getElementById(`${filter}-options`).style.display = 'flex';
+    } else {
+      document.querySelectorAll('.itembox').forEach(i => i.style.display = 'block');
+    }
+  });
+});
 
-        if (selectedClass === "") {
-          items.forEach(item => item.style.display = "block");
-        } else {
-          items.forEach(item => {
-            if (item.classList.contains(selectedClass)) {
-              item.style.display = "block";
-            } else {
-              item.style.display = "none";
-            }
-          });
-        }
-      });
+// 選択肢をクリックでフィルター
+document.querySelectorAll('.option-group button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const cls = btn.dataset.class;
+    document.querySelectorAll('.itembox').forEach(item => {
+      item.style.display = item.classList.contains(cls) ? 'block' : 'none';
     });
+  });
 });
 
 // 出展：株式会社シフトブレイン『jQuery最高の教科書』第6章

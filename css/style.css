@@ -157,7 +157,6 @@ nav.open-heart{
     }
 }
 
-
 /* フレーズ部分 */
 .space{
 	margin:10% 0;
@@ -195,9 +194,6 @@ nav.open-heart{
 	transform: translate(-50%, -50%); /* 修正 */
   }
   
-.sp-search{
-	display: none;
-}
 
 /*検索フォーム*/
 #search {
@@ -268,12 +264,19 @@ input::placeholder {
 	margin: 0 auto;
 }
 
+/*
 .grid {
 	display: flex;
-	flex-wrap: wrap; /* 要素が収まらない場合に折り返す */
-	justify-content: space-between; /* 均等配置 */
-	align-items: stretch; /* 高さを揃える */
-  }
+	flex-wrap: wrap; 
+	justify-content: space-between;
+	align-items: stretch; 
+}*/
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* スマホでは2列 */
+  gap: 8px;
+}
   
   .itembox {
 	width: 24%;
@@ -351,13 +354,10 @@ input::placeholder {
 }
 
 
-
 /* フィルターボタン */
-
-.sp-dropdown {
+.sp-accordion{
   display: none;
 }
-
 
 .filter-button {
 	list-style: none;
@@ -624,21 +624,62 @@ footer {
 
 /* スマホ対応
 -------------------------- */
-
 @media (max-width: 768px) {
-  .filter-button { display: none; } 
+  .filter-button,
+  nav {
+    display: none;
+  }
 
-	.sp-dropdown {
-		display: block;
-		margin: 1em;
-  	}
+  .sp-tabs .tab,.option-group button {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-size: 14px;
+	}
 
-  	.select {
-    	width: 100%;
-    	font-size: 16px;
-    	padding: 0.5em;
-  	}
+  .sp-tabs {
+	display: flex;
+	justify-content: space-around;
+	margin: 1rem 0;
+	}
+	.sp-tabs .tab {
+	flex: 1;
+	padding: 0.5rem;
+	border: none;
+	background: #fff;
+	border: 1px solid #978575;
+	color: #978575;
+	}
+
+	.sp-tabs .tab.active {
+	border-bottom: 2px solid #978575; /* ピンク系 */
+	background:  rgb(151, 133, 117);
+	color:#fff;
+	}
+
+	.option-group {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		padding: 1rem;
+	}
+	.option-group button {
+		padding: 0.4rem 0.8rem;
+		background: #eee;
+		border: none;
+		border-radius: 5px;
+	}
+
+	.option-group button.active {
+		padding: 0.4rem 0.8rem;
+		background: rgb(151, 133, 117);
+		border: none;
+		border-radius: 5px;
+	}
+
 }
+
+
 
 
 @media screen and (max-width: 768px) {
@@ -713,14 +754,17 @@ footer {
 		margin: 0 auto;
 	  }
 
-	.grid {
+	/*.grid {
 		grid-template-columns: repeat(2, 1fr);
 		gap: 8px;
 	  }
 	  .itembox img {
 		height: 120px;
-	  }
-	  
+	  }*/
+
+  	.grid {
+    	column-count: 2;
+  	}
 
 	#page_top {
 		width: 40px;
