@@ -754,17 +754,14 @@ footer {
 		margin: 0 auto;
 	  }
 
-	/*.grid {
+	.grid {
+		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 8px;
-	  }
-	  .itembox img {
-		height: 120px;
-	  }*/
-
-  	.grid {
-    	column-count: 2;
-  	}
+	}
+	.itembox {
+		width: auto; /* flex 干渉を回避 */
+	}
 
 	#page_top {
 		width: 40px;
